@@ -1,6 +1,11 @@
 (ns triangulo.core
   (:require [clojure.math :as math]))
 
+(defn calc-perimetro
+  "Calcula o perimetro do triangulo, dado A B e C"
+  [a b c]
+  (+ a b c))
+
 (defn calc-radianos
   "TODO: Calcular radianos dado lados a b e c de um triangulo"
   [a b c]
@@ -8,11 +13,6 @@
 
 (defn calc-angulo
   "TODO: Calcula o ângulo ∠A, dado A B C."
-  [a b c]
-  )
-
-(defn calc-perimetro
-  "TODO: Calcula o perimetro do triangulo, dado A B e C"
   [a b c]
   )
 

@@ -4,6 +4,7 @@
 
 (def triangulos-teste
   [{:lados [60 51.96152 30],
+    :perimetro 141.96152
     :agudo false,
     :isosceles false,
     :altura [25.980759999999748 29.99999999999971 51.961519999999496],
@@ -14,6 +15,7 @@
     :obtuso false,
     :equilateral false}
    {:lados [30 20 44],
+    :perimetro 94
     :agudo false,
     :isosceles false,
     :altura [16.959952830123083 25.439929245184626 11.563604202356649],
@@ -24,6 +26,7 @@
     :obtuso true,
     :equilateral false}
    {:lados [15.14741 28.08887 30],
+    :perimetro 73.23628
     :agudo true,
     :isosceles false,
     :altura [27.815512539195034 14.999997251271704 14.044432426377607],
@@ -80,6 +83,14 @@
          :lados
          (apply equilateral?)
          (= (:equilateral triangulo))
+         is)))
+
+(deftest test-perimetro
+  (doseq [triangulo triangulos-teste]
+    (->> triangulo
+         :lados
+         (apply calc-perimetro)
+         (= (:perimetro triangulo))
          is)))
 
 ;; funções acima podem ser refatoradas.
