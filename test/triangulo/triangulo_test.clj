@@ -120,6 +120,15 @@
       (is (= (:angulos triangulo)
              (mapv #(apply calc-angulo %) [lados-a lados-b lados-c]))))))
 
+(deftest test-angulos
+  (doseq [triangulo triangulos-teste]
+    (let [cycle-fn (comp (partial take 3) (partial drop 1) cycle)
+          lados-a (:lados triangulo)
+          lados-b (cycle-fn lados-a)
+          lados-c (cycle-fn lados-b)]
+      (is (= (apply obter-angulos (:lados triangulo))
+             (mapv #(apply calc-angulo %) [lados-a lados-b lados-c]))))))
+
 (comment
   (run-tests *ns*)
   )
